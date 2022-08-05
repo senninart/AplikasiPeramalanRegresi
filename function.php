@@ -29,6 +29,8 @@ function regresi(){
 	$totalxy	= 0;
 	$totalx2	= 0;
 	$totaly2	= 0;
+	$no = 1;
+
 	?>
 	<div class='card mb-5' style='width: 30rem';>
 		<div class='card-body'>
@@ -51,24 +53,32 @@ function regresi(){
 		$totalxy	= $totalxy + $xy;
 		$totalx2	= $totalx2 + $x2;
 		$totaly2	= $totaly2 + $y2;
-
+	}
+	for ($i; $i <= 24 ; $i++) {
 		/*Rumus Regresi*/
 		$b = (($totalBulan * $totalxy) - ($totalx * $totaly)) /
 	 	 (($totalBulan * $totalx2) - ($totalx * $totalx));
 
 		$a = ($totaly / $totalBulan) - $b * ($totalx / $totalBulan);
 
-		$y = $a + $b * ($totalBulan+$i);
+		$y = $a + $b * $i;
 		/*Rumus Regresi*/
 
 		$pembulatanY 	= round($y);
 		$formatY 		= number_format($pembulatanY,0,',','.');
 
 		echo "<tr>
-				<td>$i</td>
+				<td>$no</td>
 				<td>Rp. $formatY</td>
 			  </tr>";
+		$no++;
 	}
+
+		// echo "<tr>
+		// 		<td>$i</td>
+		// 		<td>Rp. $formatY</td>
+		// 	  </tr>";
+	
 	?>
 			</table>
 		</div>
